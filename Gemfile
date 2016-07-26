@@ -11,3 +11,7 @@ gem "sinatra"
 gem "rake"
 gem "rspec-sinatra"
 gem "rspec"
+
+group :test do
+  gem 'database_cleaner'
+end
