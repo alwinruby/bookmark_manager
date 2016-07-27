@@ -9,6 +9,7 @@ group :test, :development do
   gem 'capybara'
   gem "rspec-sinatra"
 end
+
 gem 'dm-postgres-adapter'
 gem 'data_mapper'
 gem "sinatra"
