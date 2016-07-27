@@ -19,10 +19,10 @@ feature 'Add tags' do
     visit '/links/new'
     fill_in 'url', with: 'www.ceramicwarehouse.com'
     fill_in 'title', with: 'pottery'
-    fill_in 'tag', with: 'pots, cracked'
+    fill_in 'tag', with: 'pots cracked'
     click_button 'Create Link'
     link = Link.first
-    expect(link.tag.map(&:name)).to include('pots, cracked')
+    expect(link.tag.map(&:name)).to include('pots', 'cracked')
 
   end
 
