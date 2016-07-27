@@ -3,8 +3,6 @@ source "https://rubygems.org"
 ruby '2.3.0'
 
 group :test do
-  gem 'rspec'
-  gem 'capybara'
   gem "database_cleaner"
 end
 
@@ -13,3 +11,5 @@ gem 'data_mapper'
 gem "sinatra"
 gem "rspec-sinatra"
 gem 'rake'
+gem 'rspec'
+gem 'capybara'
