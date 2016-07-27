@@ -2,7 +2,7 @@ ENV['RACK_ENV'] ||= 'development'
 # Specificies to set RACK_ENV to developemnt when run loccally
 
 require 'sinatra/base'
-
+require_relative 'data_mapper_setup'
 require_relative 'models/link'
 
 class BookmarkManager < Sinatra::Base
@@ -17,8 +17,13 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/links' do
-    Link.create(url: params[:url], title: params[:title])
-    redirect '/links'
+    link = Link.new(url: params[:url],
+                title: params[:title])
+    tag = Tag.first_or_create(name: params[:tag])
+    link.tag << tag
+    link.save
+
+    redirect to('/links')
   end
 
   get '/links/new' do
