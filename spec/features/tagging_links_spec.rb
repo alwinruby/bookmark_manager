@@ -1,7 +1,4 @@
-
-
 feature "tagging links" do
-
 
   scenario "adds a tag to a link" do
     visit "/links/new"
@@ -14,8 +11,6 @@ feature "tagging links" do
     expect(link.tags.map(&:name)).to include("education")
 
   end
-
-  
 
   scenario 'adds multiple tags to a link' do
     visit "/links/new"

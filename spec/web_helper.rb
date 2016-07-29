@@ -8,3 +8,10 @@ def sign_up(email: 'user101@email.com', password: 'P@ssw0rd123?', confirm_passwo
   fill_in :confirm_password, with: confirm_password
   click_button 'Sign up'
 end
+
+# def sign_in(email:, password:)
+#   visit 'users/new'
+#   fill_in :email, with: email
+#   fill_in :password, with: password
+#   click_button 'Sign in'
+# end

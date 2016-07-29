@@ -59,6 +59,11 @@ class BookmarkManager < Sinatra::Base
     end
   end
 
+  get '/sessions/new' do
+    erb :'sessions/new'
+  end
+
+
   helpers do
     def current_user
       @current_user ||= User.get(session[:user_id])

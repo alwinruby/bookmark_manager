@@ -1,5 +1,3 @@
-
-
 feature "creating links" do
   scenario "can add a link" do
     visit "/links/new"
