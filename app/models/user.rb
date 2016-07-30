@@ -2,9 +2,10 @@ require 'bcrypt'
 
 class User
 
-  attr_accessor :confirm_password
-
   include DataMapper::Resource
+  
+  attr_accessor :confirm_password
+  attr_reader :password
 
   property :id, Serial
   property :email, String, required: true, unique: true
@@ -21,10 +22,9 @@ class User
 
   def self.authenticate(email, password)
     user = first(email: email)
-
     if user && BCrypt::Password.new(user.password_digest) == password
     # return this user
-    user
+      user
     else
       nil
     end

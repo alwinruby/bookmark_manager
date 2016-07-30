@@ -23,43 +23,7 @@ feature 'User sign up' do
   scenario 'can not sign up with duplicate email' do
     sign_up
     expect { sign_up }.not_to change(User, :count)
-    #expect(current_path).to eq '/users'
     expect(page).to have_content 'Email is already taken'
   end
-
-end
-
-feature 'User sign in' do
-
-  describe User do
-
-    let!(:user) do
-      User.create(email: 'test1@email.com',
-                  password: 'hello12345',
-                  confirm_password: 'hello12345')
-      end
-
-  it 'authenticates when given a valid email address and password' do
-    authenticated_user = User.authenticate(user.email, user.password_digest)
-    expect(authenticated_user).to eq user
-  end
-
-  it 'does not authenticate when given an incorrect password' do
-    expect(User.authenticate(user.email, 'wrong_stupid_password')).to be_nil
-  end
-
-  scenario 'user correctly signs in' do
-    sign_in(email: user.email, password: user.password_digest)
-    expect(page).to have_content "Welcome, #{user.email}"
-  end
-
-  def sign_in(email:, password:)
-    visit '/sessions/new'
-    fill_in :email, with: email
-    fill_in :password, with: password
-    click_button 'Sign in'
-  end
-
-end
 
 end
